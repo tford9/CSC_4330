@@ -87,7 +87,7 @@ public class CarInfoActivity extends Activity implements OnItemSelectedListener
     {   super.onCreate(savedInstanceState);
         final PreferencesHelper prefs = new PreferencesHelper(this);
         
-        // Activate Clickable Icon Button
+        /** Activate Clickable Icon Button */
         ActionBar smartPumpIcon = getActionBar();
         smartPumpIcon.setDisplayHomeAsUpEnabled(true);
         
