@@ -1,4 +1,4 @@
-package com.project.classes;
+package com.project.searching;
 
 import com.google.android.gms.maps.model.LatLng;
 

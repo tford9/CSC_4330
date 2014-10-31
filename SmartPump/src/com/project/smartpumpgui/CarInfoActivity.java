@@ -1,7 +1,7 @@
 /**
  * @author Damond Howard
  */
-package com.project.smartpump;
+package com.project.smartpumpgui;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -46,9 +46,10 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.project.classes.NoDefaultSpinner;
-import com.project.classes.PreferencesHelper;
-import com.project.classes.Vehicle;
+import com.project.auxilliary.NoDefaultSpinner;
+import com.project.auxilliary.PreferencesHelper;
+import com.project.auxilliary.Vehicle;
+import com.project.smartpump.R;
 
 public class CarInfoActivity extends Activity implements OnItemSelectedListener 
 {   

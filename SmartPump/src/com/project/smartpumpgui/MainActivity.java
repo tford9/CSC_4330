@@ -1,4 +1,4 @@
-package com.project.smartpump;
+package com.project.smartpumpgui;
 
 import java.util.ArrayList;
 
@@ -25,11 +25,12 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.google.android.gms.maps.model.LatLng;
-import com.project.classes.Calculations;
-import com.project.classes.GasStation;
-import com.project.classes.PreferencesHelper;
-import com.project.classes.StationRequest;
-import com.project.classes.StationSearchResult;
+import com.project.adjcostcalculator.Calculations;
+import com.project.auxilliary.PreferencesHelper;
+import com.project.searching.GasStation;
+import com.project.searching.StationRequest;
+import com.project.searching.StationSearchResult;
+import com.project.smartpump.R;
 
 /**
 * MainActivity Object

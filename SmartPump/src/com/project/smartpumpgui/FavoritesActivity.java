@@ -1,13 +1,14 @@
-package com.project.smartpump;
+package com.project.smartpumpgui;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.project.classes.Calculations;
-import com.project.classes.FavoritesManager;
-import com.project.classes.GasStation;
-import com.project.classes.StationRequest;
+import com.project.adjcostcalculator.Calculations;
+import com.project.favorites.FavoritesManager;
+import com.project.searching.GasStation;
+import com.project.searching.StationRequest;
+import com.project.smartpump.R;
 
 import android.app.ActionBar;
 import android.app.ListActivity;

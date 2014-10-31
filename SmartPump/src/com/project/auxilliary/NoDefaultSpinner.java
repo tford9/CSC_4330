@@ -1,4 +1,4 @@
-package com.project.classes;
+package com.project.auxilliary;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;

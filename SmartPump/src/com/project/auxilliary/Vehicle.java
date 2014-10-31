@@ -2,7 +2,7 @@
  * @author Damond Howard
  * Class that holds vehicle information
  */
-package com.project.classes;
+package com.project.auxilliary;
 
 public class Vehicle 
 {

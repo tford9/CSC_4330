@@ -1,4 +1,4 @@
-package com.project.smartpump;
+package com.project.smartpumpgui;
 
 import java.text.NumberFormat;
 
@@ -32,11 +32,12 @@ import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.project.classes.Calculations;
-import com.project.classes.FavoritesManager;
-import com.project.classes.FuelPrice;
-import com.project.classes.GasStation;
-import com.project.classes.StationSearchResult;
+import com.project.adjcostcalculator.Calculations;
+import com.project.favorites.FavoritesManager;
+import com.project.searching.FuelPrice;
+import com.project.searching.GasStation;
+import com.project.searching.StationSearchResult;
+import com.project.smartpump.R;
 
 public class StationDetailsActivity extends Activity {
     public static Context context;

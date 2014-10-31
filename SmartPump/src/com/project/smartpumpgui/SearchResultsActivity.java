@@ -1,4 +1,4 @@
-package com.project.smartpump;
+package com.project.smartpumpgui;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -8,9 +8,10 @@ import java.util.HashMap;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
-import com.project.classes.GasStation;
-import com.project.classes.StationRequest;
-import com.project.classes.StationSearchResult;
+import com.project.searching.GasStation;
+import com.project.searching.StationRequest;
+import com.project.searching.StationSearchResult;
+import com.project.smartpump.R;
 
 import android.app.ActionBar;
 import android.app.Activity;

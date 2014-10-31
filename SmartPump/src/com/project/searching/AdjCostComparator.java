@@ -1,8 +1,6 @@
-package com.project.smartpump;
+package com.project.searching;
 
 import java.util.Comparator;
-
-import com.project.classes.StationSearchResult;
 
 public class AdjCostComparator implements
 		Comparator<StationSearchResult> {

@@ -1,4 +1,4 @@
-package com.project.classes;
+package com.project.searching;
 
 import java.util.Comparator;
 

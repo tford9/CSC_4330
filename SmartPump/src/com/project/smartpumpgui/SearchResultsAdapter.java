@@ -1,11 +1,15 @@
-package com.project.smartpump;
+package com.project.smartpumpgui;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import com.project.classes.GasStation;
-import com.project.classes.StationSearchResult;
+import com.project.searching.AdjCostComparator;
+import com.project.searching.DistanceComparator;
+import com.project.searching.GasStation;
+import com.project.searching.PriceComparator;
+import com.project.searching.StationSearchResult;
+import com.project.smartpump.R;
 
 import android.app.Activity;
 import android.content.Context;

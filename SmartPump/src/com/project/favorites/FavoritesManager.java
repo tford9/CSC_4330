@@ -1,8 +1,11 @@
-package com.project.classes;
+package com.project.favorites;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
+
+import com.project.auxilliary.PreferencesHelper;
+import com.project.searching.GasStation;
 
 import android.content.Context;
 import android.content.SharedPreferences;
