@@ -41,7 +41,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.project.smartpump.SearchResultsView"
+            android:name="com.project.smartpump.SearchResultsActivity"
             android:label="@string/search_results">
         </activity>
         <activity

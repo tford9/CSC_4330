@@ -31,7 +31,7 @@ import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.Toast;
 
-public class SearchResultsView extends Activity 
+public class SearchResultsActivity extends Activity 
 {
 	public static Context context;
     private ArrayList<StationSearchResult> stations;

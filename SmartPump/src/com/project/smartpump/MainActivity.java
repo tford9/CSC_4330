@@ -241,7 +241,7 @@ public class MainActivity extends Activity implements LocationListener {
         }
 
         /** Show search results */
-        Intent i = new Intent(getContext(), SearchResultsView.class);
+        Intent i = new Intent(getContext(), SearchResultsActivity.class);
         i.putParcelableArrayListExtra("data", stationResults);
         i.putExtra("latitude", lat);
         i.putExtra("longitude", lng);
