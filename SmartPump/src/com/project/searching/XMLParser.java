@@ -147,6 +147,7 @@ public class XMLParser {
 		}
 
 		if (parseType == 3) {
+			MPG.delete(0, 2);
 			while (eventType != XmlPullParser.END_DOCUMENT) {
 				if (eventType == XmlPullParser.START_DOCUMENT) {
 					recordsFound++;
