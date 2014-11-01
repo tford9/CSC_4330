@@ -171,7 +171,7 @@ public class XMLParser {
 		}
 		falloutbool = true;
 		if (recordsFound == 0) {
-			caller.dopublishProgress();
+			caller.doPublishProgress();
 		}
 		Log.i(TAG, "Finished processing " + recordsFound + " records.");
 		return recordsFound;

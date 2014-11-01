@@ -54,7 +54,7 @@ public class XMLAsyncDownloader extends AsyncTask<Object, String, Integer> {
 		return null;
 	}
 
-	public void dopublishProgress() {
+	public void doPublishProgress() {
 		publishProgress();
 	}
 
