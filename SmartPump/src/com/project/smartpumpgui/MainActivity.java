@@ -25,7 +25,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.google.android.gms.maps.model.LatLng;
-import com.project.adjcostcalculator.Calculations;
+import com.project.adjcostcalculator.CostCalculator;
 import com.project.auxilliary.PreferencesHelper;
 import com.project.searching.GasStation;
 import com.project.searching.StationRequest;
@@ -234,7 +234,7 @@ public class MainActivity extends Activity implements LocationListener {
         {
             for (GasStation s : stations) 
             {
-                double adjustedPrice = MPG == 0 ? 0.0 : Calculations.calculate(
+                double adjustedPrice = MPG == 0 ? 0.0 : CostCalculator.calculate(
                         MPG, s.getSelectedFuelPrice().getPrice(),
                         s.getDistance(), gallons);
                 stationResults.add(new StationSearchResult(s, adjustedPrice));

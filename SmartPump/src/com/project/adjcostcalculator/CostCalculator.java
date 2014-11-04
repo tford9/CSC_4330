@@ -5,7 +5,7 @@
 package com.project.adjcostcalculator; 
 
 
-public class Calculations
+public class CostCalculator
 {	/**
 	 * calculates cost based off mpg gas prices distance to the gas station and how many gallons the user plans to buy
 	 * @param MPG

@@ -32,7 +32,7 @@ import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.project.adjcostcalculator.Calculations;
+import com.project.adjcostcalculator.CostCalculator;
 import com.project.favorites.FavoritesManager;
 import com.project.searching.FuelPrice;
 import com.project.searching.GasStation;
@@ -283,7 +283,7 @@ public class StationDetailsActivity extends Activity {
     
     private void setPriceDisplays(FuelPrice price, double gallons) {
         double fuelPrice = price.getPrice();
-        double adjustPrice = MPG == 0.0 || gallons == 0 ? 0.0 : Calculations.calculate(MPG,
+        double adjustPrice = MPG == 0.0 || gallons == 0 ? 0.0 : CostCalculator.calculate(MPG,
                 fuelPrice, distanceAway, gallons);
         setPriceDisplays(fuelPrice, adjustPrice);
 

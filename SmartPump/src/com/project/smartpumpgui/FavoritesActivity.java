@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.project.adjcostcalculator.Calculations;
+import com.project.adjcostcalculator.CostCalculator;
 import com.project.favorites.FavoritesManager;
 import com.project.searching.GasStation;
 import com.project.searching.StationRequest;
