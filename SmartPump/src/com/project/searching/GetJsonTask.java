@@ -8,8 +8,25 @@ import java.net.URL;
 
 import android.os.AsyncTask;
 
+/**
+ * Subclass of AsyncTask which can be used to execute a HTTP request in the background.
+ * Intended use is for retrieving JSON responses from myGasFeed. 
+ * 
+ * @author SmartPump Team
+ * @version 1.0
+ *
+ */
 public class GetJsonTask extends AsyncTask<URL, Void, String> 
 {
+	/**
+	 * Overrides the AsyncTask doInBackground() method to build the response string
+	 * as the response is received. It is required that the method accept multiple URLs, 
+	 * but for the current version of SmartPump, only one URL at a time is expected
+	 * 
+	 * @param urls a list of URLs to be opened
+	 * @return response string
+	 * @throws IOException if there is an error with the URL stream
+	 */
     protected String doInBackground(URL... urls)
     {
         InputStream dataStream;

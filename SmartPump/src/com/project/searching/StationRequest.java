@@ -18,7 +18,6 @@ import com.google.android.gms.maps.model.LatLng;
 import android.content.Context;
 import android.location.Address;
 import android.location.Geocoder;
-import android.location.LocationListener;
 
 /**
 * Provides helper methods for performing a gas station search 
@@ -205,6 +204,7 @@ public class StationRequest {
      * keys are different depending on whether the station was retrieved by id or requested 
      * through a search.
      * @return GasStation object
+     * @see #getPriceValue(JSONObject s, String priceKey, String dateKey)
      * @see GasStation
      * @see FuelPrice
      * @see StationAddress
