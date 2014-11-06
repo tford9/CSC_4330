@@ -218,7 +218,7 @@ public class MainActivity extends Activity implements LocationListener {
         String selectedFuelType = fuelType.getSelectedItem().toString();
 
         /** Make search for stations */
-        ArrayList<GasStation> stations = StationRequest.NearbyGasStations(
+        ArrayList<GasStation> stations = StationRequest.getNearbyGasStations(
                 lat, lng, 10.0, selectedFuelType);
 
         /** Calculate adjusted prices and package into search results */

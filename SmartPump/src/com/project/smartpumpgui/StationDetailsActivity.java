@@ -48,7 +48,6 @@ public class StationDetailsActivity extends Activity {
     private static TextView name, 
                             address, 
                             cityStateZip, 
-                            phone, 
                             price,
                             adjustedPrice, 
                             distance;
@@ -99,7 +98,6 @@ public class StationDetailsActivity extends Activity {
         name = (TextView) findViewById(R.id.stationName);
         address = (TextView) findViewById(R.id.stationAddress);
         cityStateZip = (TextView) findViewById(R.id.cityStateZip);
-        // phone = (TextView)findViewById(R.id.stationPhone);
         price = (TextView) findViewById(R.id.stationPrice);
         adjustedPrice = (TextView) findViewById(R.id.stationAdjustedCost);
         distance = (TextView) findViewById(R.id.distanceAway);

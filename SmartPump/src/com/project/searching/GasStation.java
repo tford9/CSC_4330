@@ -10,7 +10,6 @@ public class GasStation implements Parcelable {
     
     private String stationId;
     private String stationName;
-    private String phoneNumber;
     private LatLng coords;
     private double distance; //in Miles
     private StationAddress stationAddress;
@@ -20,24 +19,22 @@ public class GasStation implements Parcelable {
     private FuelPrice prePrice;
     private FuelPrice dieselPrice;
 
-    GasStation(String stationId, String stationName, String phoneNumber, LatLng coords, StationAddress address, 
+    GasStation(String stationId, String stationName, LatLng coords, StationAddress address, 
             FuelPrice selectedPrice, double distance)
     {
         this.stationId = stationId;
         this.stationName = stationName;
-        this.phoneNumber = phoneNumber;
         this.coords = coords;
         this.stationAddress = address;
         this.selectedFuelPrice = selectedPrice;
         this.distance = distance;
     }
     
-    GasStation(String stationId, String stationName, String phoneNumber, LatLng coords, StationAddress address, 
+    GasStation(String stationId, String stationName, LatLng coords, StationAddress address, 
             FuelPrice reg, FuelPrice mid, FuelPrice pre, FuelPrice diesel)
     {
         this.stationId = stationId;
         this.stationName = stationName;
-        this.phoneNumber = phoneNumber;
         this.coords = coords;
         this.stationAddress = address;
         this.regPrice = reg;
@@ -49,7 +46,6 @@ public class GasStation implements Parcelable {
     public GasStation(Parcel in) {
         stationId = in.readString();
         stationName = in.readString();
-        phoneNumber = in.readString();
         distance = in.readDouble();
         
         coords = in.readParcelable(LatLng.class.getClassLoader());
@@ -69,10 +65,6 @@ public class GasStation implements Parcelable {
     public String getStationName()
     {
         return this.stationName;
-    }
-
-    public String getPhoneNumber() {
-        return this.phoneNumber;
     }
     
     public LatLng getCoords()
@@ -137,7 +129,6 @@ public class GasStation implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(getStationId());
         dest.writeString(getStationName());
-        dest.writeString(getPhoneNumber());
         dest.writeDouble(getDistance());
         
         dest.writeParcelable(getCoords(), flags);
@@ -170,7 +161,6 @@ public class GasStation implements Parcelable {
         String nl = System.getProperty("line.separator");
 
         result.append("Name: " + getStationName() + nl);
-        result.append("Phone Number: " + getPhoneNumber() + nl);
         result.append("Station Id:" + getStationId() + nl);
         result.append(nl);
         return result.toString();
