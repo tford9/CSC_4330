@@ -7,7 +7,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
  /**
- * Contains the data associated with a gas station. 
+ * Stores the data associated with a gas station. 
  * Implements the Parcelable interface, allowing it 
  * to be added to the Bundle of extended data passed
  * between activities.
