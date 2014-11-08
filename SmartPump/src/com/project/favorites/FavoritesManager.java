@@ -29,7 +29,7 @@ public class FavoritesManager
     /**
     *  Contructs Favorites Manager from Context
     *
-    *  @param Context The Context
+    *  @param context The Context
     */
     public FavoritesManager(Context context)
     {
@@ -40,7 +40,7 @@ public class FavoritesManager
     /**
     *  Adds  the GasStation Object to Favorites
     *
-    *  @param GasStation The Gas Station
+    *  @param station The Gas Station
     */
     public void addFavorite(GasStation station)
     {
@@ -51,7 +51,7 @@ public class FavoritesManager
     /**
     *  Removes the GasStation Object from Favorites
     *
-    *  @param GasStation The Gas Station
+    *  @param station The Gas Station
     */
     public void removeFavorite(GasStation station)
     {
@@ -62,7 +62,7 @@ public class FavoritesManager
     /**
     *   Returns True or False if the GasStation is contained in Favorites.
     *
-    *  @param GasStation The Gas Station
+    *  @param station The Gas Station
     *
     *  @return True or False 
     */
