@@ -35,6 +35,15 @@ import com.project.auxilliary.PreferencesHelper;
 import com.project.searching.XMLAsyncDownloader;
 import com.project.smartpump.R;
 
+/**
+* CarInfoActivity Object
+* 
+* <P>Requests and selects user vehicle information via FuelEconomy API
+*  
+* @implements {@link OnItemSelectedListener}
+* @author SmartPump Team
+* @version 1.0
+*/
 public class CarInfoActivity extends Activity implements OnItemSelectedListener {
 	Context context = this;
 	private static final String TAG = "Fuel Economy Query";
@@ -67,7 +76,14 @@ public class CarInfoActivity extends Activity implements OnItemSelectedListener 
 	private static ArrayAdapter<CharSequence> adapter = null,
 			makeAdapter = null, modelAdapter = null, optionsAdapter = null;
 
-	@Override
+	/**
+      * onCreate
+      * <p> Generates the context and sets it to the {@link savedInstanceState}
+      * it also maintains shared preferences.
+      *
+      * @param savedInstanceState (required) 
+      * @Override 
+    */
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		final PreferencesHelper prefs = new PreferencesHelper(this);
@@ -95,7 +111,7 @@ public class CarInfoActivity extends Activity implements OnItemSelectedListener 
 		adapter = ArrayAdapter.createFromResource(CarInfoActivity.this,
 				R.array.years_spinner,
 				android.R.layout.simple_spinner_dropdown_item);
-		// Specify the layout to use when the list of choices appears
+		/** Specify the layout to use when the list of choices appears */
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		adapter.notifyDataSetChanged();
 
