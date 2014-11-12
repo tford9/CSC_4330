@@ -25,6 +25,14 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.AdapterView.OnItemClickListener;
 
+/**
+* Activity for displaying the Stations Favorites results.
+*
+*
+* @author SmartPump Team
+* @version 1.0
+*/
+
 public class FavoritesActivity extends ListActivity {
 
     public static Context context;
@@ -34,10 +42,22 @@ public class FavoritesActivity extends ListActivity {
     private double MPG;
     static ListView lvFavs;
 
+    /**
+    *  Returns the context for this Activity
+    *
+    * @return context
+    */
     public static Context getContext() {
         return context;
     }
 
+    /**
+    * Overrides the Activity onCreate method to perform the required setup
+    * for the favorites results list
+    *
+    * @param savedInstanceState can be used when re-initializing the activity if the app was shut down
+    *
+    */
     @Override
     protected void onCreate(Bundle savedInstanceState) 
     {
@@ -94,7 +114,13 @@ public class FavoritesActivity extends ListActivity {
             }
         });
     }
-    
+    /**
+    * Any desciption here??
+    *
+    * @param name
+    * @param address
+    *
+    */
     private HashMap<String, String> putStation(String name, String address)
     {
         HashMap<String,String> newItem = new HashMap<String, String>();
@@ -103,14 +129,25 @@ public class FavoritesActivity extends ListActivity {
         return newItem;
     }
     // -------------------------- OPTIONS MENU----------------------------
-
+    /**
+    *
+    * Overrides the Activity onCreateOptionMenu method to set up the SmartPump option menu
+    *
+    * @param menu
+    */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
     	MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.favorites_menu, menu);
     	return super.onCreateOptionsMenu(menu);
     }
-    
+    /**
+    *
+    * Overrides the Activity onOptionsItemSelected method, handles clicking the home button
+    * or changing the sort option
+    *
+    * @param item
+    */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
     	this.finish();
