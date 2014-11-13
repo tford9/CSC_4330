@@ -168,7 +168,6 @@ public class StationRequest {
         {
             GetJsonTask getJson = new GetJsonTask();
             json = getJson.execute(requestUrl).get();
-            //System.out.println(json);
         } 
         catch (InterruptedException e) 
         {

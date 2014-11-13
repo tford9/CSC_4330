@@ -30,7 +30,7 @@ import com.project.auxilliary.PreferencesHelper;
 import com.project.searching.GasStation;
 import com.project.searching.StationRequest;
 import com.project.searching.StationSearchResult;
-import com.project.smartpump.R;
+import com.project.smartpumpgui.R;
 
 /**
 * MainActivity Object

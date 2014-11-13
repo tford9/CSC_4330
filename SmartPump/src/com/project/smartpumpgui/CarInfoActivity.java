@@ -33,7 +33,7 @@ import android.widget.Toast;
 import com.project.auxilliary.NoDefaultSpinner;
 import com.project.auxilliary.PreferencesHelper;
 import com.project.searching.XMLAsyncDownloader;
-import com.project.smartpump.R;
+import com.project.smartpumpgui.R;
 
 /**
 * CarInfoActivity Object

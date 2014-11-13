@@ -8,7 +8,7 @@ import com.project.adjcostcalculator.CostCalculator;
 import com.project.favorites.FavoritesManager;
 import com.project.searching.GasStation;
 import com.project.searching.StationRequest;
-import com.project.smartpump.R;
+import com.project.smartpumpgui.R;
 
 import android.app.ActionBar;
 import android.app.ListActivity;

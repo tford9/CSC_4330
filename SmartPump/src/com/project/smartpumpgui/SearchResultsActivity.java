@@ -1,17 +1,9 @@
 package com.project.smartpumpgui;
 
-import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
 
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
-import com.project.searching.GasStation;
-import com.project.searching.StationRequest;
 import com.project.searching.StationSearchResult;
-import com.project.smartpump.R;
+import com.project.smartpumpgui.R;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -22,15 +14,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import android.widget.Toast;
 
 /**
  * Activity for displaying station search results in a ListView.
