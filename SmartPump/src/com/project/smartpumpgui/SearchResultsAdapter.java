@@ -9,7 +9,7 @@ import com.project.searching.DistanceComparator;
 import com.project.searching.GasStation;
 import com.project.searching.PriceComparator;
 import com.project.searching.StationSearchResult;
-import com.project.smartpump.R;
+import com.project.smartpumpgui.R;
 
 import android.app.Activity;
 import android.content.Context;
@@ -21,10 +21,24 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+/**
+ * Extends the BaseAdapter class and provides a custom adapter
+ * for mapping a StationSearchResult to a list item.
+ * 
+ * @author SmartPump Team
+ * @version 1.0
+ * @see SearchResultsActivity
+ */
 public class SearchResultsAdapter extends BaseAdapter {
     private final Context context;
     private final ArrayList<StationSearchResult> stationResults;
 
+    /**
+     * Constructs a new SearchResultsAdapter with StationSearchResult objects
+     * and a context.
+     * @param results an ArrayList of StationSearchResult objects
+     * @param context the context of the calling Activity
+     */
     public SearchResultsAdapter(ArrayList<StationSearchResult> results,
             Context context) {
         super();
@@ -43,7 +57,6 @@ public class SearchResultsAdapter extends BaseAdapter {
 
         ImageView logo = (ImageView) v.findViewById(R.id.stationLogo);
         TextView name = (TextView) v.findViewById(R.id.stationName);
-        // TextView address = (TextView) v.findViewById(R.id.stationAddress);
         TextView distance = (TextView) v.findViewById(R.id.distanceAway);
         TextView pumpPrice = (TextView) v.findViewById(R.id.pumpPrice);
         TextView adjustedCost = (TextView) v.findViewById(R.id.adjustedCost);
@@ -61,7 +74,6 @@ public class SearchResultsAdapter extends BaseAdapter {
             logo.setImageDrawable(context.getResources().getDrawable(R.drawable.gasstation));
         }
         name.setText(s.getStationName());
-        // address.setText(s.getWebAddress());
         distance.setText(String.valueOf(s.getDistance()) + " mi");
         
         NumberFormat currency = NumberFormat.getCurrencyInstance();

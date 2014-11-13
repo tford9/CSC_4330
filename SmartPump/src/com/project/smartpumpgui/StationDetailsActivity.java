@@ -37,7 +37,7 @@ import com.project.favorites.FavoritesManager;
 import com.project.searching.FuelPrice;
 import com.project.searching.GasStation;
 import com.project.searching.StationSearchResult;
-import com.project.smartpump.R;
+import com.project.smartpumpgui.R;
 
 public class StationDetailsActivity extends Activity {
     public static Context context;

@@ -8,10 +8,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.location.Criteria;
 import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.Menu;
@@ -24,13 +21,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationClient;
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.model.LatLng;
 import com.project.adjcostcalculator.CostCalculator;
 import com.project.auxilliary.PreferencesHelper;
 import com.project.searching.GasStation;
 import com.project.searching.StationRequest;
 import com.project.searching.StationSearchResult;
-import com.project.smartpump.R;
+import com.project.smartpumpgui.R;
 
 /**
 * MainActivity Object
@@ -43,12 +46,22 @@ import com.project.smartpump.R;
 * @author SmartPump Team
 * @version 1.0
 */
-public class MainActivity extends Activity implements LocationListener {
+public class MainActivity extends Activity implements
+		LocationListener,
+		GoogleApiClient.ConnectionCallbacks,
+		GoogleApiClient.OnConnectionFailedListener {
+	
     public static Context context;
+    
+    /** UI elements */
     static EditText numGallons, address;
     static Button searchWithAddress, searchWithLocation;
     static Spinner fuelType;
     private String provider;
+   
+    private GoogleApiClient mGoogleApiClient;
+    private LocationRequest mLocationRequest;
+    private Location currentLocation;
     private double latitude, longitude;
     private double MPG;
 
@@ -88,6 +101,14 @@ public class MainActivity extends Activity implements LocationListener {
         fuelType.setAdapter(adapter);
         fuelType.setSelection(0);
 
+        /** Set Google API client needed for location management */
+        mGoogleApiClient = new GoogleApiClient.Builder(context)
+        		.addApi(LocationServices.API)
+        		.addConnectionCallbacks(this)
+        		.addOnConnectionFailedListener(this)
+        		.build();
+        
+        
         /** Functionality for handling searches */
         address = (EditText) findViewById(R.id.address);
         numGallons = (EditText) findViewById(R.id.estimatedGallons);
@@ -108,6 +129,7 @@ public class MainActivity extends Activity implements LocationListener {
         searchWithLocation.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+            	getCoords();
                 if (latitude == -1.0 || longitude == -1.0)
                 {
                     System.out.println("could not get coords");
@@ -119,8 +141,6 @@ public class MainActivity extends Activity implements LocationListener {
                 }
             }
         });
-
-        getCoords();
     }
 
     /** ---------------------------SEARCH HELPERS-------------------------------*/
@@ -240,6 +260,9 @@ public class MainActivity extends Activity implements LocationListener {
                 stationResults.add(new StationSearchResult(s, adjustedPrice));
             }
         }
+        
+        /** Stop listening for location */
+        LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
 
         /** Show search results */
         Intent i = new Intent(getContext(), SearchResultsActivity.class);
@@ -251,53 +274,57 @@ public class MainActivity extends Activity implements LocationListener {
 
     /** ------------------------LOCATION MANAGEMENT---------------------------- */
     public void getCoords() {
-        /** Set up location manager for getting GPS coordinates */
-        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        /** If GPS is not enabled, take user to screen to enable it */
-        boolean enabled = locationManager
-                .isProviderEnabled(LocationManager.GPS_PROVIDER);
-        if (!enabled) {
-            Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-            startActivity(intent);
-        }
-        Criteria criteria = new Criteria();
-        provider = locationManager.getBestProvider(criteria, false);
-        /** Get last known location */
-        Location location = locationManager.getLastKnownLocation(provider);
-        if (location != null) {
-            latitude = location.getLatitude();
-            longitude = location.getLongitude();
-            onLocationChanged(location);
-        } else {
-            latitude = -1.0;
-            longitude = -1.0;
-        }
+    	/** If current location has still not been found, attempt to request last location */
+    	if (currentLocation == null) {
+    		currentLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
+    	}
+    	/** If still null (should be rare), set lat and long to -1 */
+    	if (currentLocation == null) {
+    		longitude = -1.0; latitude = -1.0;
+    	}
+    	else {
+    		longitude = currentLocation.getLongitude();
+    		latitude = currentLocation.getLatitude();
+    	}
     }
 
     @Override
-    public void onLocationChanged(Location location) {
-        latitude = location.getLatitude();
-        longitude = location.getLongitude();
+    protected void onStart() {
+    	super.onStart();
+    	mGoogleApiClient.connect();
     }
+    
+    @Override
+    protected void onStop() {
+    	mGoogleApiClient.disconnect();
+    	super.onStop();
+    }
+    
+    @Override
+    public void onConnected(Bundle bundle) {
+    	mLocationRequest = LocationRequest.create();
+    	mLocationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
+    	mLocationRequest.setInterval(3000); //update every 3 seconds
+    	
+    	LocationServices.FusedLocationApi.requestLocationUpdates(
+    			mGoogleApiClient, mLocationRequest, this);
+    }
+    
+	@Override
+	public void onLocationChanged(Location loc) {
+		currentLocation = loc;
+	}
 
     @Override
-    public void onStatusChanged(String provider, int status, Bundle extras) {
-        // TODO Auto-generated method stub
-
+    public void onConnectionFailed(ConnectionResult connectionResult) {
+    	// TODO Implement inherited method
     }
-
+    
     @Override
-    public void onProviderEnabled(String provider) {
-        // TODO Auto-generated method stub
-
+    public void onConnectionSuspended(int i) {
+    	// TODO Implement inherited method
     }
-
-    @Override
-    public void onProviderDisabled(String provider) {
-        // TODO Auto-generated method stub
-
-    }
-
+	
     /** -------------------------- OPTIONS MENU----------------------------*/
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -311,6 +338,7 @@ public class MainActivity extends Activity implements LocationListener {
         switch (item.getItemId()) {
         case R.id.favorites:
             System.out.println("star clicked");
+            getCoords();
             Intent i = new Intent(getContext(), FavoritesActivity.class);
             i.putExtra("latitude", latitude);
             i.putExtra("longitude", longitude);

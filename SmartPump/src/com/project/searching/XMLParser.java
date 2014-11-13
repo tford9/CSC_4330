@@ -12,11 +12,8 @@ import org.xmlpull.v1.XmlPullParserException;
 import android.util.Log;
 
 /**
- * XML Parser
- * <p>
- * Handles four types of parsing based on passed parseType value from 0 to 4. 0
- * = Model, 1 = Make, 2 = Options, 3 = MPG.
- * </p>
+ * Handles four types of parsing based on passed parseType value from 0 to 4. 
+ * 0 = Model, 1 = Make, 2 = Options, 3 = MPG.
  * 
  * @author SmartPump Team
  * @version 1.0
@@ -30,6 +27,16 @@ public class XMLParser {
 	XMLAsyncDownloader caller;
 	int parseType;
 
+	/** 
+    * Constructs a XMLParser object
+    *
+    * @param that Gets the XMLAsyncDownloader object used for downloading the XML Data
+    * @param tag 
+	* @param S List of elements available for the spinner drop-down list
+	* @param V List of elements available for the vehicle spinner drop-down list	
+	* @param pType The type of parse that should be performed
+	* @param mPG The Miles per Gallon
+    */
 	public XMLParser(XMLAsyncDownloader that, String tag, ArrayList<String> S,
 			ArrayList<String> V, int pType, StringBuilder mPG) {
 		caller = that;
@@ -40,6 +47,11 @@ public class XMLParser {
 		parseType = pType;
 	}
 
+	/** 
+    * Attempts to parse the XML data
+	*
+	* @param downloadData The XML Data downloaded 
+    */
 	public int tryParsingXmlData(XmlPullParser downloadData) {
 		Log.i(TAG, "Trying to parse Data");
 
@@ -58,6 +70,11 @@ public class XMLParser {
 		return 0;
 	}
 
+	/** 
+    * Processes downloaded data based on parseType; pulls SmartPump required information out
+	* 
+	* @param xmlData 
+    */
 	private int processDownloadData(XmlPullParser xmlData)
 			throws XmlPullParserException, IOException {
 		Log.i(TAG, "Attempting Process");

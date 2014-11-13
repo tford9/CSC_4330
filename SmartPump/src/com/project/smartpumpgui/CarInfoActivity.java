@@ -1,6 +1,3 @@
-/**
- * @author Damond Howard
- */
 package com.project.smartpumpgui;
 
 import java.io.UnsupportedEncodingException;
@@ -33,14 +30,13 @@ import android.widget.Toast;
 import com.project.auxilliary.NoDefaultSpinner;
 import com.project.auxilliary.PreferencesHelper;
 import com.project.searching.XMLAsyncDownloader;
-import com.project.smartpump.R;
+import com.project.smartpumpgui.R;
 
 /**
-* CarInfoActivity Object
-* 
-* <P>Requests and selects user vehicle information via FuelEconomy API
+* Handles the requests and selecting of user vehicle information via FuelEconomy API
 *  
 * @implements {@link OnItemSelectedListener}
+* @extends {@link Activity}
 * @author SmartPump Team
 * @version 1.0
 */
@@ -77,13 +73,12 @@ public class CarInfoActivity extends Activity implements OnItemSelectedListener 
 			makeAdapter = null, modelAdapter = null, optionsAdapter = null;
 
 	/**
-      * onCreate
-      * <p> Generates the context and sets it to the {@link savedInstanceState}
-      * it also maintains shared preferences.
-      *
-      * @param savedInstanceState (required) 
-      * @Override 
-    */
+     * Generates the context and sets it to the {@link savedInstanceState}
+     * it also maintains shared preferences. Overrides the Activity onCreate 
+	 * method to perform the required set-up for the Car Info  list.
+     * 
+     * @param savedInstanceState can be used when re-initializing the activity if the app was shut down
+     */
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		final PreferencesHelper prefs = new PreferencesHelper(this);
@@ -122,7 +117,10 @@ public class CarInfoActivity extends Activity implements OnItemSelectedListener 
 		System.out.println("Making item selector 1");
 		year_spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
 
-			@Override
+			/** 
+			 * Handles clicking the vehicle year selection spinner 
+			 */
+			 @Override
 			public void onItemSelected(AdapterView<?> parent, View view,
 					int position, long id) {
 				year = year_spinner.getSelectedItem().toString();
@@ -170,6 +168,9 @@ public class CarInfoActivity extends Activity implements OnItemSelectedListener 
 				}
 			}
 
+			/** 
+			 * Required Override
+			 */
 			@Override
 			public void onNothingSelected(AdapterView<?> parent) {
 			}
@@ -177,6 +178,9 @@ public class CarInfoActivity extends Activity implements OnItemSelectedListener 
 		make_spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
 
 			@Override
+			/** 
+			 * What to do when an element in the Spinner is selected
+			 */
 			public void onItemSelected(AdapterView<?> parent, View view,
 					int position, long id) {
 
@@ -240,6 +244,9 @@ public class CarInfoActivity extends Activity implements OnItemSelectedListener 
 
 			}
 
+			/** 
+			 * Required Override
+			 */
 			@Override
 			public void onNothingSelected(AdapterView<?> parent) {
 				// TODO Auto-generated method stub
@@ -248,6 +255,9 @@ public class CarInfoActivity extends Activity implements OnItemSelectedListener 
 		System.out.println("Making item selector 2");
 		model_spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
 
+			/** 
+			 * 
+			 */
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view,
 					int position, long id) {
@@ -315,6 +325,9 @@ public class CarInfoActivity extends Activity implements OnItemSelectedListener 
 
 			}
 
+			/** 
+			 * Required Override
+			 */
 			@Override
 			public void onNothingSelected(AdapterView<?> parent) {
 				// TODO Auto-generated method stub
@@ -323,6 +336,9 @@ public class CarInfoActivity extends Activity implements OnItemSelectedListener 
 		System.out.println("Making item selector 3");
 		options_spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
 
+			/** 
+			 * 
+			 */
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view,
 					int position, long id) {
@@ -345,6 +361,9 @@ public class CarInfoActivity extends Activity implements OnItemSelectedListener 
 				}
 			}
 
+			/** 
+			 * Required Override
+			 */
 			@Override
 			public void onNothingSelected(AdapterView<?> parent) {
 				// TODO Auto-generated method stub
@@ -352,6 +371,9 @@ public class CarInfoActivity extends Activity implements OnItemSelectedListener 
 		});
 
 		AddVehicle.setOnClickListener(new OnClickListener() {
+			/** 
+			 * Creates the template for AddVehicle when user selects the "Add Vehicle" option
+			 */
 			@SuppressLint("ShowToast")
 			@Override
 			public void onClick(View v) {
@@ -376,12 +398,19 @@ public class CarInfoActivity extends Activity implements OnItemSelectedListener 
 		});
 	}
 
+	/**
+     * Overrides the Activity onCreateOptionsMenu method to set up the SmartPump options menu.
+     */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.car_info, menu);
 		return true;
 	}
 
+	/**
+     * Overrides the Activity onOptionsItemSelected method, handles clicking the home button
+     * or changing the sort option.
+     */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
@@ -514,6 +543,9 @@ public class CarInfoActivity extends Activity implements OnItemSelectedListener 
 		}
 	}
 
+	/** 
+	 * Required Override
+	 */
 	@Override
 	public void onNothingSelected(AdapterView<?> parent) {}
 }
