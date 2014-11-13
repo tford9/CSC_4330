@@ -65,7 +65,7 @@ public class FavoritesActivity extends ListActivity {
         setContentView(R.layout.favorites);
         context = getApplicationContext();
 
-        // Activate Clickable Icon Button
+        /* Activate Clickable Icon Button */
         ActionBar smartPumpIcon = getActionBar();
         smartPumpIcon.setDisplayHomeAsUpEnabled(true);
         
@@ -115,7 +115,7 @@ public class FavoritesActivity extends ListActivity {
         });
     }
     /**
-    * Any desciption here??
+    * This Hash Table contained all the information from the saved favorites Gas Stations.
     *
     * @param name
     * @param address
