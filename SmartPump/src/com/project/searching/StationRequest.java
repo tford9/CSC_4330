@@ -39,6 +39,8 @@ public class StationRequest {
     private static String myGasFeedDevUrl = "http://devapi.mygasfeed.com/";
     private static String myGasFeedUrl = "http://api.mygasfeed.com/";
     
+    private static String requestedFuelType;
+    
     /**
      * Transforms a street address into a (latitude, longitude) coordinate.
      * 
@@ -94,6 +96,8 @@ public class StationRequest {
         url.append(latitude + "/" + longitude + "/" + radius + "/");
         url.append(fuelType + "/" + sortby + "/");
         url.append(myGasFeedkey + ".json");
+        
+        requestedFuelType = fuelType;
         
         JSONArray stations = new JSONArray();
         try 
@@ -223,7 +227,7 @@ public class StationRequest {
         double lat = Double.parseDouble((String) station.get("lat"));
         double lng = Double.parseDouble((String) station.get("lng"));
         LatLng coords = new LatLng(lat,lng);
-        
+
         if(requestById)
         {
             String name = (String) station.get("station_name");
@@ -236,7 +240,10 @@ public class StationRequest {
         else
         {
             String name = (String) station.get("station");
-            FuelPrice price = getPriceValue(station, "price", "date");
+            /** Testing with MyGasFeed update to response format */
+            String priceKey = requestedFuelType + "_price";
+            String dateKey = requestedFuelType + "_date";
+            FuelPrice price = getPriceValue(station, priceKey, "date");
             String distanceInfo = (String) station.get("distance");
             String[] distanceParts = distanceInfo.split(" ");
             double distance = Double.parseDouble(distanceParts[0]);
