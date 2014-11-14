@@ -31,6 +31,7 @@ import android.widget.AdapterView.OnItemClickListener;
 *
 * @author SmartPump Team
 * @version 1.0
+* @see FavoritesManager
 */
 
 public class FavoritesActivity extends ListActivity {

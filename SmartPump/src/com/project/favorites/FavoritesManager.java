@@ -17,7 +17,7 @@ import android.content.SharedPreferences;
 *
 * @author SmartPump Team
 * @version 1.0
-* @see ?My GasFeed API, perhaps? !!!CHANGE THIS!!!!
+* @see FavoritesActivity
 */
 
 public class FavoritesManager 
@@ -38,7 +38,7 @@ public class FavoritesManager
     }
 
     /**
-    *  Adds  the GasStation Object to Favorites
+    *  Adds the GasStation Object to Favorites
     *
     *  @param station The Gas Station
     */
