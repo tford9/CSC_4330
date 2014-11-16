@@ -1,9 +1,13 @@
-/**
- * all calculations should be kept in this class
- * @author Damond Howard
- */
 package com.project.adjcostcalculator; 
 
+/**
+ * Adjusted Cost calculation class
+ * 
+ * <P> Contains two overloaded "calculate" function </P>
+ * 
+ * @version 1.0
+ * @author SmartPump Team
+ */
 
 public class CostCalculator
 {	/**

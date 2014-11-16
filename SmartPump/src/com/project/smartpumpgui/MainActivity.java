@@ -36,13 +36,13 @@ import com.project.searching.StationSearchResult;
 import com.project.smartpumpgui.R;
 
 /**
-* MainActivity Object
 * 
-* <P>Controls the flow of SmartPump application execution. 
+* Controls the flow of SmartPump application execution. 
 *  
-* <P>Note that {@link BigDecimal} is used to model the price - not double or float. 
-* See {@link #Guitar(String, BigDecimal, Integer)} for more information.
+* <P>Note that Main Activity also GUI initiator.</P> 
 * @implements {@link LocationListener}
+* @implements {@link GoogleApiClient.ConnectionCallbacks} 
+* @implements {@link GoogleApiClient.OnConnectionFailedListener} 
 * @author SmartPump Team
 * @version 1.0
 */
@@ -278,7 +278,7 @@ public class MainActivity extends Activity implements
     	if (currentLocation == null) {
     		currentLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
     	}
-    	/** If still null (should be rare), set lat and long to -1 */
+    	/** If still null (should be rare), set latitude and longitude to -1 */
     	if (currentLocation == null) {
     		longitude = -1.0; latitude = -1.0;
     	}
