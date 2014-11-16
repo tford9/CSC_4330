@@ -1,9 +1,15 @@
-/**
- * @author Damond Howard
- * Class that holds vehicle information
- */
 package com.project.auxilliary;
 
+/**
+ * <p>Class maintains vehicle profile information. Currently
+ * doesn't support multiple profile storage. Uses PreferencesHelper
+ * to store vehicle data. Is not currently implemented.</p>
+ * 
+ * @deprecated
+ * 
+ * @author SmartPump Team
+ * 
+ */
 public class Vehicle 
 {
     private String vehicleMake;

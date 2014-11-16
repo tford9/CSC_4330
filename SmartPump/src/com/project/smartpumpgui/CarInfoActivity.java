@@ -33,13 +33,16 @@ import com.project.searching.XMLAsyncDownloader;
 import com.project.smartpumpgui.R;
 
 /**
-* Handles the requests and selecting of user vehicle information via FuelEconomy API
-*  
-* @implements {@link OnItemSelectedListener}
-* @extends {@link Activity}
-* @author SmartPump Team
-* @version 1.0
-*/
+ * Handles the requests and selecting of user vehicle information via
+ * FuelEconomy API.
+ * 
+ * @author SmartPump Team
+ * @version 1.0
+ * 
+ * @Override {@link OnItemSelectedListener}
+ * @extends {@link Activity}
+ */
+
 public class CarInfoActivity extends Activity implements OnItemSelectedListener {
 	Context context = this;
 	private static final String TAG = "Fuel Economy Query";
@@ -73,12 +76,14 @@ public class CarInfoActivity extends Activity implements OnItemSelectedListener 
 			makeAdapter = null, modelAdapter = null, optionsAdapter = null;
 
 	/**
-     * Generates the context and sets it to the {@link savedInstanceState}
-     * it also maintains shared preferences. Overrides the Activity onCreate 
-	 * method to perform the required set-up for the Car Info  list.
-     * 
-     * @param savedInstanceState can be used when re-initializing the activity if the app was shut down
-     */
+	 * Generates the context and sets it to the savedInstanceState it also
+	 * maintains shared preferences. Overrides the Activity onCreate method to
+	 * perform the required set-up for the Car Info list.
+	 * 
+	 * @param savedInstanceState
+	 *            can be used when re-initializing the activity if the app was
+	 *            shut down
+	 */
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		final PreferencesHelper prefs = new PreferencesHelper(this);
@@ -117,10 +122,10 @@ public class CarInfoActivity extends Activity implements OnItemSelectedListener 
 		System.out.println("Making item selector 1");
 		year_spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
 
-			/** 
-			 * Handles clicking the vehicle year selection spinner 
+			/**
+			 * Handles clicking the vehicle year selection spinner
 			 */
-			 @Override
+			@Override
 			public void onItemSelected(AdapterView<?> parent, View view,
 					int position, long id) {
 				year = year_spinner.getSelectedItem().toString();
@@ -168,7 +173,7 @@ public class CarInfoActivity extends Activity implements OnItemSelectedListener 
 				}
 			}
 
-			/** 
+			/**
 			 * Required Override
 			 */
 			@Override
@@ -244,7 +249,7 @@ public class CarInfoActivity extends Activity implements OnItemSelectedListener 
 
 			}
 
-			/** 
+			/**
 			 * Required Override
 			 */
 			@Override
@@ -325,7 +330,7 @@ public class CarInfoActivity extends Activity implements OnItemSelectedListener 
 
 			}
 
-			/** 
+			/**
 			 * Required Override
 			 */
 			@Override
@@ -361,7 +366,7 @@ public class CarInfoActivity extends Activity implements OnItemSelectedListener 
 				}
 			}
 
-			/** 
+			/**
 			 * Required Override
 			 */
 			@Override
@@ -371,8 +376,9 @@ public class CarInfoActivity extends Activity implements OnItemSelectedListener 
 		});
 
 		AddVehicle.setOnClickListener(new OnClickListener() {
-			/** 
-			 * Creates the template for AddVehicle when user selects the "Add Vehicle" option
+			/**
+			 * Creates the template for AddVehicle when user selects the
+			 * "Add Vehicle" option
 			 */
 			@SuppressLint("ShowToast")
 			@Override
@@ -399,8 +405,9 @@ public class CarInfoActivity extends Activity implements OnItemSelectedListener 
 	}
 
 	/**
-     * Overrides the Activity onCreateOptionsMenu method to set up the SmartPump options menu.
-     */
+	 * Overrides the Activity onCreateOptionsMenu method to set up the SmartPump
+	 * options menu.
+	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.car_info, menu);
@@ -408,9 +415,9 @@ public class CarInfoActivity extends Activity implements OnItemSelectedListener 
 	}
 
 	/**
-     * Overrides the Activity onOptionsItemSelected method, handles clicking the home button
-     * or changing the sort option.
-     */
+	 * Overrides the Activity onOptionsItemSelected method, handles clicking the
+	 * home button or changing the sort option.
+	 */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
@@ -451,8 +458,7 @@ public class CarInfoActivity extends Activity implements OnItemSelectedListener 
 		return true;
 	}
 
-	public void reset()
-	{
+	public void reset() {
 		SpinnerList1.clear();
 		SpinnerList2.clear();
 		SpinnerList3.clear();
@@ -462,7 +468,8 @@ public class CarInfoActivity extends Activity implements OnItemSelectedListener 
 			modelAdapter.notifyDataSetChanged();
 			optionsAdapter.notifyDataSetChanged();
 
-		} catch (Exception e) {}
+		} catch (Exception e) {
+		}
 
 		firstRunCheckYearSpinner = true;
 		firstRunCheckMakeSpinner = true;
@@ -543,9 +550,10 @@ public class CarInfoActivity extends Activity implements OnItemSelectedListener 
 		}
 	}
 
-	/** 
+	/**
 	 * Required Override
 	 */
 	@Override
-	public void onNothingSelected(AdapterView<?> parent) {}
+	public void onNothingSelected(AdapterView<?> parent) {
+	}
 }

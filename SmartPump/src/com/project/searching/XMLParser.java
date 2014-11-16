@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.project.searching;
 
 import java.io.IOException;
@@ -12,8 +9,8 @@ import org.xmlpull.v1.XmlPullParserException;
 import android.util.Log;
 
 /**
- * Handles four types of parsing based on passed parseType value from 0 to 4. 
- * 0 = Model, 1 = Make, 2 = Options, 3 = MPG.
+ * Handles four types of parsing based on passed parseType value from 0 to 4. 0
+ * = Model, 1 = Make, 2 = Options, 3 = MPG.
  * 
  * @author SmartPump Team
  * @version 1.0
@@ -23,20 +20,27 @@ public class XMLParser {
 	public StringBuilder MPG;
 	private ArrayList<String> SpinnerList;
 	private ArrayList<String> VehicleIDList;
-	private Boolean falloutbool = false;
+	private Boolean fallOutBool = false;
 	XMLAsyncDownloader caller;
 	int parseType;
 
-	/** 
-    * Constructs a XMLParser object
-    *
-    * @param that Gets the XMLAsyncDownloader object used for downloading the XML Data
-    * @param tag 
-	* @param S List of elements available for the spinner drop-down list
-	* @param V List of elements available for the vehicle spinner drop-down list	
-	* @param pType The type of parse that should be performed
-	* @param mPG The Miles per Gallon
-    */
+	/**
+	 * Constructs a XMLParser object
+	 * 
+	 * @param that
+	 *            Gets the XMLAsyncDownloader object used for downloading the
+	 *            XML Data
+	 * @param tag
+	 * @param S
+	 *            List of elements available for the spinner drop-down list
+	 * @param V
+	 *            List of elements available for the vehicle spinner drop-down
+	 *            list
+	 * @param pType
+	 *            The type of parse that should be performed
+	 * @param mPG
+	 *            The Miles per Gallon
+	 */
 	public XMLParser(XMLAsyncDownloader that, String tag, ArrayList<String> S,
 			ArrayList<String> V, int pType, StringBuilder mPG) {
 		caller = that;
@@ -47,11 +51,12 @@ public class XMLParser {
 		parseType = pType;
 	}
 
-	/** 
-    * Attempts to parse the XML data
-	*
-	* @param downloadData The XML Data downloaded 
-    */
+	/**
+	 * Attempts to parse the XML data
+	 * 
+	 * @param downloadData
+	 *            The XML Data downloaded
+	 */
 	public int tryParsingXmlData(XmlPullParser downloadData) {
 		Log.i(TAG, "Trying to parse Data");
 
@@ -70,11 +75,12 @@ public class XMLParser {
 		return 0;
 	}
 
-	/** 
-    * Processes downloaded data based on parseType; pulls SmartPump required information out
-	* 
-	* @param xmlData 
-    */
+	/**
+	 * Processes downloaded data based on parseType; pulls SmartPump required
+	 * information out
+	 * 
+	 * @param xmlData
+	 */
 	private int processDownloadData(XmlPullParser xmlData)
 			throws XmlPullParserException, IOException {
 		Log.i(TAG, "Attempting Process");
@@ -186,7 +192,7 @@ public class XMLParser {
 				eventType = xmlData.next();
 			}
 		}
-		falloutbool = true;
+		fallOutBool = true;
 		if (recordsFound == 0) {
 			caller.doPublishProgress();
 		}
@@ -196,10 +202,10 @@ public class XMLParser {
 
 	protected void onProgressUpdate(String... values) {
 		if (values.length == 0)
-			falloutbool = false;
+			fallOutBool = false;
 		Log.i(TAG, "No Data Downloaded");
 		if (values.length > 0) {
-			falloutbool = true;
+			fallOutBool = true;
 		}
 		caller.doOnProgressUpdate(values);
 	}

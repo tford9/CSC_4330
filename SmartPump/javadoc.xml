@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="javadoc">
+    <target name="javadoc">
+        <javadoc access="private" additionalparam="-docletpath C:\Users\MicronX\Documents\GitHub\CSC_4330\SmartPumpArc.jar&#13;&#10;-tag extends:a:&quot;Extends:&quot;&#13;&#10;-tag Override:a:&quot;Overrides:&quot;&#13;&#10;-tag attr:a:&quot;XML Attribute:&quot;;&#13;&#10;-resourcepath C:\Users\MicronX\Downloads\yworks-uml-doclet-3.0_02-jdk1.5\yworks-uml-doclet-3.0_02-jdk1.5\resources&#13;&#10;-umlautogen&#13;&#10;-d C:\Users\MicronX\Documents\GitHub\CSC_4330\SmartPump\UMLdocs\&#13;&#10;-bootclasspath C:\Users\MicronX\AppData\Local\Android\android-sdk\platforms\android-21\android.jar&#13;&#10;" classpath="libs/android-support-v4.jar;libs/json-simple-1.1.1.jar;C:\Users\MicronX\Documents\GitHub\CSC_4330\google-play-services_lib\bin\google-play-services_lib.jar;C:\Users\MicronX\Documents\GitHub\CSC_4330\google-play-services_lib\libs\google-play-services.jar" packagenames="com.project.searching,android,com.project.smartpumpgui,com.google.android.gms,com.project.favorites,com.project.adjcostcalculator,com.project.auxilliary" sourcepath="gen;C:\Users\MicronX\Documents\GitHub\CSC_4330\google-play-services_lib\src;src;C:\Users\MicronX\Documents\GitHub\CSC_4330\google-play-services_lib\gen">
+            <doclet name="ydoc.doclets.YStandard" path="C:\Users\MicronX\Downloads\yworks-uml-doclet-3.0_02-jdk1.5\yworks-uml-doclet-3.0_02-jdk1.5\lib\ydoc.jar"/>
+        </javadoc>
+    </target>
+</project>

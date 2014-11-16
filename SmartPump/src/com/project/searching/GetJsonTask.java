@@ -9,12 +9,14 @@ import java.net.URL;
 import android.os.AsyncTask;
 
 /**
+ * 
  * Subclass of AsyncTask which can be used to execute a HTTP request in the background.
- * Intended use is for retrieving JSON responses from myGasFeed. 
+ * Intended use is for retrieving JSON responses from myGasFeed.
  * 
  * @author SmartPump Team
  * @version 1.0
- *
+ *  
+ * 
  */
 public class GetJsonTask extends AsyncTask<URL, Void, String> 
 {

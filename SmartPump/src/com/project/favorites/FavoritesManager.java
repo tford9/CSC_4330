@@ -11,13 +11,13 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 /**
-* Stores a fuel station as a "favorite". Smartpump will save the station's
+* Stores a fuel station as a "favorite". SmartPump will save the station's
 * MyGasFeedID to the user's device. After retrieving the station's ID, MyGasFeed will
 * return the price per gallon for all the available grades at the station.
 *
 * @author SmartPump Team
 * @version 1.0
-* @see FavoritesActivity
+* @see com.project.smartpumpgui.FavoritesActivity
 */
 
 public class FavoritesManager 

@@ -13,31 +13,40 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 /**
-* Handles background downloading of vehicle information allowing SmartPump 
-* to continue running during the request. This class extends AsyncTask which 
-* gives the structure for background downloads. This class uses XMLParser to
-* obtain needed data.
-*
-* @extends {@link AsyncTask}
-* @author SmartPump Team
-* @version 1.0
-*/
+ * <p>
+ * Handles background downloading of vehicle information allowing SmartPump to
+ * continue running during the request. This class extends AsyncTask which gives
+ * the structure for background downloads. This class uses XMLParser to obtain
+ * needed data.
+ * </p>
+ * 
+ * @extends {@link AsyncTask}
+ * @author SmartPump Team
+ * @version 1.0
+ */
 public class XMLAsyncDownloader extends AsyncTask<Object, String, Integer> {
 
 	String addressString;
 	private String TAG;
 	XMLParser parser;
 
-	/** 
-    * Constructs a XMLAsyncDownloader object from the parameter
-    *
-    * @param URL_String URL address of download source
-    * @param tag 
-	* @param SpinnerList List of elements available for the spinner drop-down list in XMLParser
-	* @param VehicleList List of elements available for the vehicle spinner drop-down list in XMLParser
-	* @param mPG The Miles per Gallon for XMLParser
-	* @param parseType The type of parse that XMLParser should handle
-    */
+	/**
+	 * Constructs a XMLAsyncDownloader object from the parameter
+	 * 
+	 * @param URL_String
+	 *            URL address of download source
+	 * @param tag
+	 * @param SpinnerList
+	 *            List of elements available for the spinner drop-down list in
+	 *            XMLParser
+	 * @param VehicleList
+	 *            List of elements available for the vehicle spinner drop-down
+	 *            list in XMLParser
+	 * @param mPG
+	 *            The Miles per Gallon for XMLParser
+	 * @param parseType
+	 *            The type of parse that XMLParser should handle
+	 */
 	public XMLAsyncDownloader(String URL_String, String tag,
 			ArrayList<String> SpinnerList, ArrayList<String> VehicleList,
 			StringBuilder mPG, int parseType) {
@@ -47,9 +56,9 @@ public class XMLAsyncDownloader extends AsyncTask<Object, String, Integer> {
 				mPG);
 	}
 
-	/** 
-    * Attempts to download data in the background
-    */
+	/**
+	 * Attempts to download data in the background
+	 */
 	@Override
 	protected Integer doInBackground(Object... params) {
 		Log.i(TAG, "In doInBackground task");
@@ -59,9 +68,9 @@ public class XMLAsyncDownloader extends AsyncTask<Object, String, Integer> {
 		return null;
 	}
 
-	/** 
-    * Attempts to pull XML Data from given URL
-    */
+	/**
+	 * Attempts to pull XML Data from given URL
+	 */
 	private XmlPullParser tryDownloadingXmlData() {
 		Log.i(TAG, "Trying to download XML");
 
