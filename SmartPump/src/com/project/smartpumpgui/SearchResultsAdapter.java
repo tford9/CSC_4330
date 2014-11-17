@@ -49,6 +49,17 @@ public class SearchResultsAdapter extends BaseAdapter {
 		this.stationResults = results;
 	}
 
+/**
+* Gets the view of the map in relation to the user
+*
+* @param position
+*			responsible for the position of the user
+* @param convertView
+*			adjusts the view of the map to the position
+* @param parent
+*
+* @return v
+*/
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		View v = convertView;
@@ -88,31 +99,66 @@ public class SearchResultsAdapter extends BaseAdapter {
 		return v;
 	}
 
+/**
+* Sorts the gas stations results by distance 
+*
+* @return this
+*/
 	public SearchResultsAdapter DistanceSort() {
 		Collections.sort(stationResults, new DistanceComparator());
 		return this;
 	}
 
+/**
+* Sorts the gas station results by adjusted cost
+*
+* @return this
+*/
 	public SearchResultsAdapter AdjSort() {
 		Collections.sort(stationResults, new AdjCostComparator());
 		return this;
 	}
 
+/**
+* Sorts the gas stations results by price 
+*
+* @return this
+*/
 	public SearchResultsAdapter PriceSort() {
 		Collections.sort(stationResults, new PriceComparator());
 		return this;
 	}
 
+/**
+* Gets the count
+*
+* @return stationResults.size()
+*/
 	@Override
 	public int getCount() {
 		return stationResults.size();
 	}
 
+/**
+* Gets the item
+*
+* @param position
+* 			can be used for marking the position of a gas station on the map
+*
+* @return this
+*/
 	@Override
 	public Object getItem(int position) {
 		return stationResults.get(position);
 	}
 
+/**
+* Gets the item id which may be used for further functionality in the future
+*
+* @param arg0
+*
+* @return 0
+*/
 	@Override
 	public long getItemId(int arg0) {
 		return 0;
