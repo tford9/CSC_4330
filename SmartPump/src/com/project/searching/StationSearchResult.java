@@ -107,11 +107,16 @@ public class StationSearchResult implements Parcelable,
 		}
 	};
 
-	// //////////////////////////methods to implement for
-	// sort////////////////////////////////////////
+	/**
+	 * Compares this StationSearchResult with the argument
+	 * based on the adjusted cost property. Used for
+	 * sorting results by adjuste cost
+	 * 
+	 * @param that the StationSearchResult to compare this to
+	 * @return integer value representing comparison. EQUAL = 0, BEFORE = -1, AFTER = 1
+	 */
 	@Override
-	public int compareTo(StationSearchResult that) // compareTo sorts according
-													// to adjusted cost
+	public int compareTo(StationSearchResult that)
 	{
 		final int EQUAL = 0;
 		final int BEFORE = -1;

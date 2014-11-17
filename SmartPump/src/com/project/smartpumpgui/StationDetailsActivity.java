@@ -70,10 +70,25 @@ public class StationDetailsActivity extends Activity {
 	private double currentLat, currentLng, stationLat, stationLng;
 	private double MPG, distanceAway, adjustedCost;
 
+	/**
+	 * Returns the context for this Activity
+	 * 
+	 * @return context
+	 */
 	public static Context getContext() {
 		return context;
 	}
 
+	/**
+	 * onCreate
+	 * <p>
+	 * Generates the context and sets it to the savedInstanceState it also
+	 * maintains shared preferences.
+	 * 
+	 * @param savedInstanceState
+	 *            (required)
+	 * @Override
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -207,6 +222,9 @@ public class StationDetailsActivity extends Activity {
 		}
 	}
 
+	/**
+	 * Sets the station logo icon, which is retrieved based on the station logo id.
+	 */
 	private void setLogo() {
 		int logoId = station.getLogoId(context);
 		if (logoId != 0) {
@@ -216,6 +234,15 @@ public class StationDetailsActivity extends Activity {
 	}
 
 	/** -----------------------PRICE DISPLAY HELPERS-------------------------- */
+	/**
+	 * Takes user input of fuel type and number of gallons to purchase,
+	 * and updates the priceSummary view with the pump price and adjusted price for that fuel.
+	 * If the number of gallons is not provided, the price display
+	 * with show no adjusted cost.
+	 * 
+	 * @see #getFuelSelection(int selectedFuel)
+	 * @see #setPriceDisplays(double price, double numGallons)
+	 */
 	private void getPriceSummary() {
 		final int selectedFuel = fuelType.getSelectedItemPosition();
 		if (selectedFuel == 0) {
@@ -261,6 +288,12 @@ public class StationDetailsActivity extends Activity {
 		}
 	}
 
+	/**
+	 * Retrieves the desired fuel type price from the station.
+	 * 
+	 * @param position the selected item position in the fuelType spinner menu.
+	 * @return FuelPrice
+	 */
 	private FuelPrice getFuelSelection(int position) {
 		switch (position) {
 		case 1:
@@ -276,6 +309,14 @@ public class StationDetailsActivity extends Activity {
 		}
 	}
 
+	/**
+	 * Computes the adjusted pump price for a fuel type, and then
+	 * sets the priceSummary view with the fuel price and adjusted price.
+	 * 
+	 * @param price price of the selected fuel type
+	 * @param gallons number of gallons to be purchased
+	 * @see #setPriceDisplays(double fuelPrice, double adjustPrice)
+	 */
 	private void setPriceDisplays(FuelPrice price, double gallons) {
 		double fuelPrice = price.getPrice();
 		double adjustPrice = MPG == 0.0 || gallons == 0 ? 0.0 : CostCalculator
@@ -284,6 +325,13 @@ public class StationDetailsActivity extends Activity {
 
 	}
 
+	/**
+	 * Sets the priceSummary view with the fuel price and adjusted price.
+	 * If either price is set to 0, the value is shown as "Not available"
+	 * 
+	 * @param fuelPrice price of the selected fuel type
+	 * @param adjustPrice the adjusted pump price
+	 */
 	private void setPriceDisplays(double fuelPrice, double adjustPrice) {
 		/** Determine price information */
 		NumberFormat currency = NumberFormat.getCurrencyInstance();
@@ -309,6 +357,13 @@ public class StationDetailsActivity extends Activity {
 	}
 
 	/** -------------------------- OPTIONS MENU---------------------------- */
+	/**
+	 * Sets up the menu option for adding or removing the station as a favorite.
+	 * If the station is not a favorite, an empty star is displayed. If the station
+	 * is already a favorite, then a yellow-filled star is displayed.
+	 * 
+	 * @return true if the menu is created successfully
+	 */
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.details_menu, menu);
@@ -325,6 +380,12 @@ public class StationDetailsActivity extends Activity {
 		return true;
 	}
 
+	/**
+	 * Overrides the Activity onOptionsItemSelected method, handles clicking the
+	 * home button or the favorites star.
+	 * 
+	 * @param item the selected menu item
+	 */
 	@Override
 	public boolean onOptionsItemSelected(final MenuItem item) {
 		/** Handle item selection */

@@ -64,6 +64,11 @@ public class MainActivity extends Activity implements LocationListener,
 	private double latitude, longitude;
 	private double MPG;
 
+	/**
+	 * Returns the context for this Activity
+	 * 
+	 * @return context
+	 */
 	public static Context getContext() {
 		return context;
 	}

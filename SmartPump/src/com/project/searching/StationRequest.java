@@ -30,7 +30,7 @@ import android.location.Geocoder;
 * 
 * @author SmartPump Team
 * @version 1.0
-* @see <a href="http://www.mygasfeed.com/keys/intro>myGasFeed</a>
+* @see <a href="http://www.mygasfeed.com/keys/intro">myGasFeed</a>
 */
 public class StationRequest {
     private static String myGasFeedDevkey = "rfej9napna";
